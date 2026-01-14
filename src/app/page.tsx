@@ -14,7 +14,9 @@ export default function Home() {
 
   return (
     <div className="relative w-screen min-h-screen cursor-none">
+      <div className="z-20">
       <SmoothCursor />
+      </div>
 
       <div className="absolute inset-0 -z-10">
         <Squares
