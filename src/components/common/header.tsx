@@ -8,7 +8,7 @@ function Header() {
     backdrop-blur shadow-accent'>
             <div className="flex gap-2 items-center justify-between">
                 <Link className="" href='/'>
-                    <HyperText>HDA</HyperText>
+                    <HyperText className="cursor-none">HDA</HyperText>
                 </Link>
                 <div className="text-lg">
                     <ModeToggle />
