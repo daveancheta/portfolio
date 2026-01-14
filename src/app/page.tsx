@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <div className="relative w-screen min-h-screen cursor-none">
-      <div className="z-20">
+      <div className="z-20 hidden sm:flex">
       <SmoothCursor />
       </div>
 
