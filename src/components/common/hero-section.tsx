@@ -53,7 +53,7 @@ function HeroSection() {
           "Continue learning and exploring new things, but don't forget to rest, be with someone you love, and always pray." - Dave
         </p>
         <div className="space-y-4">
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mt-5 flex flex-wrap gap-2 justify-center sm:justify-start">
             {socialLinks.map((social) =>
               <div className="relative flex justify-center" key={social.id}>
                 <div onMouseEnter={() => setHover(social.id)} onMouseLeave={() => setHover(null)} className={cn("absolute -top-62 bg-white dark:bg-black border-3 p-4 rounded-md min-h-40 w-100 transition-all duration-400 origin-bottom scale-0 opacity-0 ease-in-out sm:flex hidden", hover === social.id && "opacity-100 scale-100", hover === 4 && "opacity-0")}>
@@ -66,7 +66,6 @@ function HeroSection() {
                     {social.title}
                   </Link>
                 </Button>
-
               </div>
             )}
           </div>
