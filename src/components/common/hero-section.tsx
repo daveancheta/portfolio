@@ -71,12 +71,20 @@ function HeroSection() {
 
       <div className="flex flex-col gap-2 sm:mt-0 mt-5">
         <div className="max-w-lg w-full">
-          <HeroVideoDialog
-            animationStyle="from-center"
-            videoSrc="https://www.youtube.com/embed/Xl_xKoVivHk?si=8Bm0zR-x5zYSWrjq"
-            thumbnailSrc="/profile.jpg"
-            thumbnailAlt="Dave Ancheta"
-          />
+        <HeroVideoDialog
+        className="block dark:hidden"
+        animationStyle="top-in-bottom-out"
+        videoSrc="https://www.youtube.com/embed/Xl_xKoVivHk?si=8Bm0zR-x5zYSWrjq"
+        thumbnailSrc="/profile.jpg"
+        thumbnailAlt="Dave Ancheta"
+      />
+      <HeroVideoDialog
+        className="hidden dark:block"
+        animationStyle="top-in-bottom-out"
+        videoSrc="https://www.youtube.com/embed/Xl_xKoVivHk?si=8Bm0zR-x5zYSWrjq"
+        thumbnailSrc="/profile.jpg"
+        thumbnailAlt="Dave Ancheta"
+      />
         </div>
 
         <div className="max-w-xl w-full">
