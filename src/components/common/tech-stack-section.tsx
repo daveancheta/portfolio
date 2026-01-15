@@ -12,7 +12,8 @@ function TechStackSection() {
             backend: ["Node.js", "Express", "Laravel", "CodeIgniter", "JWT", "REST"],
             database: ["PostgreSQL", "MongoDB", "MySQL", "SQLite"],
             orm: ["Prisma", "Eloquent"],
-            deployment: ["Vercel", "Railway", "Neon"]
+            deployment: ["Vercel", "Railway", "Neon"],
+            devTools: ["Git", "Github", "VS Code", "Cursor", "Discord"]
         }
     ]
 
@@ -119,11 +120,26 @@ function TechStackSection() {
                                 </div>
                             </div>)}
                     </div>
+
+                    {/* Developer Tools */}
+                    <div>
+                        <p className="text-xl font-semibold">Developer Tools</p>
+                        {stack.map((stack) =>
+                            <div key={stack.id}>
+                                <div className="mt-4 flex flex-wrap gap-2">
+                                    {stack.devTools.map((devTools) =>
+                                        <Badge className="text-md border text-black dark:bg-black dark:text-white 
+                                rounded-sm" key={devTools} variant="outline">
+                                            {devTools}
+                                        </Badge>)}
+                                </div>
+                            </div>)}
+                    </div>
                 </div>
             </div>
 
             <LogoLoop
-                className="mt-4"
+                className="mt-8"
                 logos={techLogos}
                 speed={150}
                 direction="left"
@@ -134,7 +150,6 @@ function TechStackSection() {
                 fadeOutColor="#ffffff"
                 ariaLabel="Technology partners"
             />
-
         </section>
     )
 }
