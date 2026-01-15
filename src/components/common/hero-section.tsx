@@ -5,6 +5,7 @@ import { HeroVideoDialog } from "@/components/ui/hero-video-dialog"
 import { AnimatedSpan, Terminal, TypingAnimation } from "@/components/ui/terminal"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
+import { MoveUpRight } from "lucide-react"
 
 function HeroSection() {
   const [hover, setHover] = useState<number | null>(null)
@@ -34,10 +35,11 @@ function HeroSection() {
       logo: <img className="w-4 h-4" src="/facebook.svg" alt="" />,
       link: "https://www.facebook.com/heavendavequimpoancheta/",
       profile: "/profile/facebook-profile.png"
-    }
+    },
+
   ]
   return (
-    <section className="wrapper mt-20 grid grid-cols-1 sm:grid-cols-2 items-center">
+    <section className="wrapper mt-20 grid grid-cols-1 sm:grid-cols-2 items-center gap-8">
       <div>
         <h1 className="text-4xl font-bold">Dave Ancheta</h1>
         <span className="text-xl text-muted-foreground">Full-Stack Developer</span>
@@ -50,41 +52,49 @@ function HeroSection() {
         <p className="text-3xl mt-5 sm:w-130 pacifico text-muted-foreground">
           "Continue learning and exploring new things, but don't forget to rest, be with someone you love, and always pray." - Dave
         </p>
-        <div className="mt-5 flex gap-2">
-          {socialLinks.map((social) =>
-            <div className="relative flex justify-center" key={social.id}>
-              <div onMouseEnter={() => setHover(social.id)} onMouseLeave={() => setHover(null)} className={cn("absolute -top-62 bg-white dark:bg-black border-3 p-4 rounded-md min-h-40 w-100 transition-all duration-400 origin-bottom scale-0 opacity-0 ease-in-out sm:flex hidden", hover === social.id && "opacity-100 scale-100")}>
-                <img className="w-full h-auto" src={social.profile} alt="" />
+        <div className="space-y-4">
+          <div className="mt-5 flex flex-wrap gap-2">
+            {socialLinks.map((social) =>
+              <div className="relative flex justify-center" key={social.id}>
+                <div onMouseEnter={() => setHover(social.id)} onMouseLeave={() => setHover(null)} className={cn("absolute -top-62 bg-white dark:bg-black border-3 p-4 rounded-md min-h-40 w-100 transition-all duration-400 origin-bottom scale-0 opacity-0 ease-in-out sm:flex hidden", hover === social.id && "opacity-100 scale-100", hover === 4 && "opacity-0")}>
+                  <img className="w-full h-auto" src={social.profile} alt="" />
+                </div>
+
+                <Button onMouseEnter={() => setHover(social.id)} onMouseLeave={() => setHover(null)} className="cursor-none" variant='outline' asChild>
+                  <Link href={social.link} className="flex items-center" target="_blank">
+                    {social.logo}
+                    {social.title}
+                  </Link>
+                </Button>
+
               </div>
-
-              <Button onMouseEnter={() => setHover(social.id)} onMouseLeave={() => setHover(null)} className="cursor-none" variant='outline' asChild>
-                <Link href={social.link} className="flex items-center" target="_blank">
-                  {social.logo}
-                  {social.title}
-                </Link>
-              </Button>
-
-            </div>
-          )}
+            )}
+          </div>
         </div>
+        <Button className="cursor-none flex justify-center mt-2" variant='outline' asChild>
+          <Link href="mailto:daveancheta411@gmail.com" className="flex items-center">
+            <MoveUpRight />
+            Hire Me
+          </Link>
+        </Button>
       </div>
 
       <div className="flex flex-col gap-2 sm:mt-0 mt-5">
         <div className="max-w-lg w-full">
-        <HeroVideoDialog
-        className="block dark:hidden"
-        animationStyle="top-in-bottom-out"
-        videoSrc="https://www.youtube.com/embed/Xl_xKoVivHk?si=8Bm0zR-x5zYSWrjq"
-        thumbnailSrc="/profile.jpg"
-        thumbnailAlt="Dave Ancheta"
-      />
-      <HeroVideoDialog
-        className="hidden dark:block"
-        animationStyle="top-in-bottom-out"
-        videoSrc="https://www.youtube.com/embed/Xl_xKoVivHk?si=8Bm0zR-x5zYSWrjq"
-        thumbnailSrc="/profile.jpg"
-        thumbnailAlt="Dave Ancheta"
-      />
+          <HeroVideoDialog
+            className="block dark:hidden"
+            animationStyle="top-in-bottom-out"
+            videoSrc="https://www.youtube.com/embed/Xl_xKoVivHk?si=8Bm0zR-x5zYSWrjq"
+            thumbnailSrc="/profile.jpg"
+            thumbnailAlt="Dave Ancheta"
+          />
+          <HeroVideoDialog
+            className="hidden dark:block"
+            animationStyle="top-in-bottom-out"
+            videoSrc="https://www.youtube.com/embed/Xl_xKoVivHk?si=8Bm0zR-x5zYSWrjq"
+            thumbnailSrc="/profile.jpg"
+            thumbnailAlt="Dave Ancheta"
+          />
         </div>
 
         <div className="max-w-xl w-full">
