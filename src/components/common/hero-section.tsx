@@ -39,21 +39,21 @@ function HeroSection() {
 
   ]
   return (
-    <section className="wrapper mt-20 grid grid-cols-1 sm:grid-cols-2 items-center gap-8">
+    <section className="wrapper sm:mt-20 mt-10 grid grid-cols-1 sm:grid-cols-2 items-center gap-8">
       <div>
-        <h1 className="text-4xl font-bold">Dave Ancheta</h1>
-        <span className="text-xl text-muted-foreground">Full-Stack Developer</span>
-        <p className="text-3xl mt-5 font-medium sm:w-130">
+        <h1 className="sm:text-4xl text-2xl font-bold">Dave Ancheta</h1>
+        <span className="sm:text-xl text-md text-muted-foreground">Full-Stack Developer</span>
+        <p className="sm:text-3xl text-xl mt-5 font-medium sm:w-130">
           Hello World,
           I’m Dave from the Philippines,
           a technology {""}<Highlighter action="underline" color="#FF9800">enthusiast</Highlighter>{""}
           driven by passion for programming and continuous learning.</p>
 
-        <p className="text-3xl mt-5 sm:w-130 pacifico text-muted-foreground">
+        <p className="sm:text-3xl text-xl mt-5 sm:w-130 pacifico text-muted-foreground">
           "Continue learning and exploring new things, but don't forget to rest, be with someone you love, and always pray." - Dave
         </p>
         <div className="space-y-4">
-          <div className="mt-5 flex flex-wrap gap-2 justify-center sm:justify-start">
+          <div className="mt-5 flex flex-row gap-2 justify-center sm:justify-start">
             {socialLinks.map((social) =>
               <div className="relative flex justify-center" key={social.id}>
                 <div onMouseEnter={() => setHover(social.id)} onMouseLeave={() => setHover(null)} className={cn("absolute -top-62 bg-white dark:bg-black border-3 p-4 rounded-md min-h-40 w-100 transition-all duration-400 origin-bottom scale-0 opacity-0 ease-in-out sm:flex hidden", hover === social.id && "opacity-100 scale-100", hover === 4 && "opacity-0")}>
@@ -78,7 +78,7 @@ function HeroSection() {
         </Button>
       </div>
 
-      <div className="flex flex-col gap-2 sm:mt-0 mt-5">
+      <div className="flex flex-col gap-2 sm:mt-0 mt-0">
         <div className="max-w-lg w-full">
           <HeroVideoDialog
             className="block dark:hidden"
