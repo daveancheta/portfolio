@@ -44,7 +44,7 @@ function TechStackSection() {
         <section className="mt-10">
             <div className="wrapper">
                 <h1 className="sm:text-4xl text-2xl font-bold flex items-center gap-2">
-                    <Layers className="text-muted-foreground sm:size-10 size-5" />
+                    <Layers className="text-muted-foreground sm:size-8 size-5" />
                     Tech Stack
                 </h1>
 
