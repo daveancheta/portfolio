@@ -103,13 +103,13 @@ function HeroSection() {
               </div>
             )}
           </div>
+          <Button className="cursor-none flex justify-center mt-2 w-full" variant='outline' asChild>
+            <Link href="mailto:daveancheta411@gmail.com" className="flex items-center">
+              <MoveUpRight />
+              Hire Me
+            </Link>
+          </Button>
         </div>
-        <Button className="cursor-none flex justify-center mt-2 w-full" variant='outline' asChild>
-          <Link href="mailto:daveancheta411@gmail.com" className="flex items-center">
-            <MoveUpRight />
-            Hire Me
-          </Link>
-        </Button>
       </div>
     </section>
   )
