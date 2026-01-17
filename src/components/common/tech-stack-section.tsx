@@ -11,7 +11,7 @@ function TechStackSection() {
     const stack = [
         {
             id: 1,
-            frontend: ["JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Bootstrap", "Styled Components"],
+            frontend: ["JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Bootstrap", "Framer Motion", "Styled Components"],
             backend: ["Node.js", "Express", "Laravel", "CodeIgniter", "JWT", "REST"],
             database: ["PostgreSQL", "MongoDB", "MySQL", "SQLite"],
             orm: ["Prisma", "Eloquent"],
