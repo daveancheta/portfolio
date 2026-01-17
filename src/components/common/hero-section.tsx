@@ -85,12 +85,11 @@ function HeroSection() {
       </div>
 
 
-
-      <motion.div
-        initial={{ opacity: 0, x: -1000 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, ease: "easeIn" }}>
-        <div className="order-2 sm:order-1 md:flex md:flex-col md:items-center xl:items-start sm:flex sm:flex-col sm:items-center">
+      <div className="order-2 sm:order-1 md:flex md:flex-col md:items-center xl:items-start sm:flex sm:flex-col sm:items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -1000 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeIn" }}>
           <div className="md:text-center sm:text-center xl:text-start">
             <h1 className="sm:text-4xl text-2xl font-bold">Dave Ancheta</h1>
             <span className="sm:text-xl text-md text-muted-foreground">Full-Stack Developer</span>
@@ -128,8 +127,9 @@ function HeroSection() {
               </Link>
             </Button>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
+
     </section>
   )
 }
