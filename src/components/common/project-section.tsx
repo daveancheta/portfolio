@@ -40,9 +40,14 @@ function ProjectSection() {
         <h1 className="sm:text-4xl text-2xl font-bold flex items-center gap-2">
           <FolderKanban className="text-muted-foreground sm:size-8 size-5" />Recent Projects
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 gap-6">
-          {projects.map((p) =>
-            <Link href={p.link} key={p.id} className="cursor-none" target="_blank">
+      </motion.div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 gap-6">
+        {projects.map((p) =>
+          <Link href={p.link} key={p.id} className="cursor-none" target="_blank">
+            <motion.div initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, ease: 'easeIn' }}
+              viewport={{ once: false }}>
               <div className="bg-white dark:bg-black p-5 border-3 rounded-lg min-h-150 max-h-150 space-y-4 
             transition-all duration-300 ease-in-out hover:shadow-2xl transform hover:scale-101">
                 <img className="rounded-lg" src={p.imgUrl} alt="" />
@@ -56,12 +61,11 @@ function ProjectSection() {
                   <p className="text-base text-muted-foreground">{p.description}</p>
                 </div>
               </div>
-            </Link>
-          )}
-        </div>
-      </motion.div>
-
-    </section>
+            </motion.div>
+          </Link>
+        )}
+      </div>
+    </section >
   )
 }
 
