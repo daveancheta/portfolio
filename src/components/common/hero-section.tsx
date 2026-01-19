@@ -58,14 +58,14 @@ function HeroSection() {
             <HeroVideoDialog
               className="block dark:hidden"
               animationStyle="top-in-bottom-out"
-              videoSrc="https://www.youtube.com/embed/Xl_xKoVivHk?si=8Bm0zR-x5zYSWrjq"
+              videoSrc="https://www.youtube.com/embed/hxacRd-Yxfs?si=dL7_hM9oPUuUJtfo"
               thumbnailSrc="/profile.jpg"
               thumbnailAlt="Dave Ancheta"
             />
             <HeroVideoDialog
               className="hidden dark:block"
               animationStyle="top-in-bottom-out"
-              videoSrc="https://www.youtube.com/embed/Xl_xKoVivHk?si=8Bm0zR-x5zYSWrjq"
+              videoSrc="https://www.youtube.com/embed/hxacRd-Yxfs?si=dL7_hM9oPUuUJtfo"
               thumbnailSrc="/profile.jpg"
               thumbnailAlt="Dave Ancheta"
             />
