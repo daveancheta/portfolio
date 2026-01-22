@@ -154,7 +154,6 @@ function TechStackSection() {
                 gap={40}
                 hoverSpeed={0}
                 scaleOnHover
-                fadeOut
                 fadeOutColor="#ffffff"
                 ariaLabel="Technology partners"
             />
