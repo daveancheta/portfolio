@@ -17,11 +17,11 @@ export function ModeToggle() {
     <div>{theme !== "light" ?
       <button className="cursor-none"
         onClick={() => setTheme('light')}>
-        <Sun className="text-yellow-500" />
+        <Sun className="text-yellow-500 size-5 sm:size-6 text-center" />
       </button> :
       <button className="cursor-none"
         onClick={() => setTheme('dark')}>
-        <Moon className="text-gray-800" />
+        <Moon className="text-gray-800 size-5 sm:size-6 text-center" />
       </button>}
     </div>
   )
