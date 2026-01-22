@@ -7,6 +7,14 @@ function ProjectSection() {
   const projects = [
     {
       id: 1,
+      title: "ReQuake",
+      imgUrl: "/requake.png",
+      description: "ReQuake is a real-time earthquake detection map that visualizes seismic activity across the Philippines, providing location-based insights to improve public awareness.",
+      stack: ["Next.js", "TypeScript", "Tailwind", "PostgreSQL", "Prisma",],
+      link: "https://requake.vercel.app/"
+    },
+    {
+      id: 2,
       title: "Grindax",
       imgUrl: "/grindax.png",
       description: "A full-stack movie collection management app built with Next.js, TypeScript, Prisma, and Clerk. Features TMDB API integration for automatic movie data enrichment, user authentication, and a beautiful responsive UI built with shadcn/ui and Tailwind CSS.",
@@ -14,7 +22,7 @@ function ProjectSection() {
       link: "https://grindax.vercel.app/"
     },
     {
-      id: 2,
+      id: 3,
       title: "CarVibe",
       imgUrl: "/carvibe.png",
       description: "A role-based Car Rental System built with Laravel and Blade, supporting renters, drivers, and administrators, featuring vehicle booking, driver assignment, rental tracking, and comprehensive administrative management tools.",
@@ -22,7 +30,7 @@ function ProjectSection() {
       link: "https://github.com/daveancheta/Car-Rental-System-Laravel"
     },
     {
-      id: 3,
+      id: 4,
       title: "SitterLy",
       imgUrl: "/sitterly.png",
       description: "SitteryLy – A SaaS platform that connects parents with available babysitters. Parents can browse and hire babysitters, while babysitters can post their availability. The system includes a secure online payment center, and the platform owner earns a 5% commission from each successful transaction.",
@@ -50,7 +58,7 @@ function ProjectSection() {
               viewport={{ once: false }}>
               <div className="bg-white dark:bg-black sm:p-5 border-3 rounded-lg min-h-150 max-h-auto space-y-4 
             transition-all duration-300 ease-in-out hover:shadow-2xl transform hover:scale-101">
-                <img className="rounded-t-lxl" src={p.imgUrl} alt="" />
+                <img className="rounded-t-sm" src={p.imgUrl} alt="" />
                 <div className="p-4 flex flex-col gap-2">
                   <div className="flex flex-wrap gap-2">
                     {p.stack.map((stack) =>
