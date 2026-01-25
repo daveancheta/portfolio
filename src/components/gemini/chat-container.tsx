@@ -10,14 +10,30 @@ function ChatContainer({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: Reac
     const ai = new GoogleGenAI({ apiKey });
     const [prompt, setPrompt] = useState<string>("")
     const [response, setResponse] = useState<any>("")
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const handleSend = async () => {
-        const response = await ai.models.generateContent({
-            model: "gemini-2.5-flash-lite",
-            contents: { text: prompt },
-        });
+        setIsLoading(true)
         setPrompt("")
-        setResponse(response.text);
+
+        try {
+            const response = await ai.models.generateContent({
+                model: "gemini-2.5-flash",
+                contents: { text: prompt },
+            });
+            setResponse(response.text?.replace(/\*/g, '') || '');
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
+    const handleKeyEnter = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault()
+            handleSend()
+        }
     }
 
     return (
@@ -42,9 +58,16 @@ function ChatContainer({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: Reac
 
                 {/* Messages */}
                 <div className='flex-1 overflow-y-auto'>
-                    <div className={cn('flex flex-col gap-1 px-2 py-2', !response && 'hidden')}>
-                        <div className='bg-black dark:bg-white rounded-md p-4 w-60'>
-                            <span className='text-white dark:text-black text-sm'>{response}</span>
+                    <div className={cn('flex flex-col gap-1 px-2 py-2', !response && !isLoading && 'hidden')}>
+                        <div className='bg-black dark:bg-white rounded-md p-4 w-fit max-w-60'>
+                            {isLoading ?
+                                <div className='bg-black dark:bg-white flex flex-row gap-1'>
+                                    <div className='w-1 h-1 bg-white dark:bg-black animate-bounce rounded-full'></div>
+                                    <div className='w-1 h-1 bg-white dark:bg-black animate-bounce delay-150 rounded-full'></div>
+                                    <div className='w-1 h-1 bg-white dark:bg-black animate-bounce delay-300 rounded-full'></div>
+                                </div> :
+                                <span className='text-white dark:text-black text-sm'>{response}</span>
+                            }
                         </div>
                     </div>
                 </div>
@@ -56,13 +79,16 @@ function ChatContainer({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: Reac
                         placeholder="Aa"
                         onChange={(e) => setPrompt(e.target.value)}
                         value={prompt}
+                        onKeyDown={handleKeyEnter}
+                        maxLength={300}
                     />
                     <InputGroupAddon align="block-end"
                         className='cursor-none'>
-                        <InputGroupText>0/500</InputGroupText>
+                        <InputGroupText>{prompt.length}/300</InputGroupText>
                         <InputGroupButton variant="default" size="sm"
                             className="ml-auto cursor-none"
-                            onClick={handleSend}>
+                            onClick={handleSend}
+                            disabled={isLoading || !prompt.trim()}>
                             <Send />
                         </InputGroupButton>
                     </InputGroupAddon>
