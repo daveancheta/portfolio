@@ -1,11 +1,28 @@
+"use client"
 import { Send, X } from 'lucide-react'
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupText, InputGroupTextarea } from '../ui/input-group'
-import React from 'react'
+import React, { useState } from 'react'
+import { GoogleGenAI } from "@google/genai";
+import { cn } from '@/lib/utils';
 
 function ChatContainer({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: React.Dispatch<React.SetStateAction<boolean>> }) {
+    const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY
+    const ai = new GoogleGenAI({ apiKey });
+    const [prompt, setPrompt] = useState<string>("")
+    const [response, setResponse] = useState<any>("")
+
+    const handleSend = async () => {
+        const response = await ai.models.generateContent({
+            model: "gemini-2.5-flash-lite",
+            contents: { text: prompt },
+        });
+        setPrompt("")
+        setResponse(response.text);
+    }
+
     return (
         <div className='sm:relative bg-background border
-        rounded-md sm:min-h-130 sm:min-w-100 max-w-100 sm:h-full flex flex-col w-screen h-130'>
+        rounded-md sm:min-h-130 sm:min-w-100 max-w-100 sm:h-full flex flex-col w-screen h-130 max-h-130'>
             <div className='flex flex-col h-full'>
                 {/* Profile */}
                 <div className='flex items-center justify-between px-4 py-2 border-b-2'>
@@ -25,20 +42,27 @@ function ChatContainer({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: Reac
 
                 {/* Messages */}
                 <div className='flex-1 overflow-y-auto'>
-
+                    <div className={cn('flex flex-col gap-1 px-2 py-2', !response && 'hidden')}>
+                        <div className='bg-black dark:bg-white rounded-md p-4 w-60'>
+                            <span className='text-white dark:text-black text-sm'>{response}</span>
+                        </div>
+                    </div>
                 </div>
-
                 {/* Message Input */}
                 <InputGroup className='rounded-t-none'>
                     <InputGroupTextarea
                         className='cursor-none'
                         id="block-end-textarea"
                         placeholder="Aa"
+                        onChange={(e) => setPrompt(e.target.value)}
+                        value={prompt}
                     />
                     <InputGroupAddon align="block-end"
                         className='cursor-none'>
                         <InputGroupText>0/500</InputGroupText>
-                        <InputGroupButton variant="default" size="sm" className="ml-auto cursor-none">
+                        <InputGroupButton variant="default" size="sm"
+                            className="ml-auto cursor-none"
+                            onClick={handleSend}>
                             <Send />
                         </InputGroupButton>
                     </InputGroupAddon>
