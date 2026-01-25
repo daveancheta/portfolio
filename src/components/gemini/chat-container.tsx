@@ -11,8 +11,10 @@ function ChatContainer({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: Reac
     const [prompt, setPrompt] = useState<string>("")
     const [response, setResponse] = useState<any>("")
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [message, setMessage] = useState<string>("")
 
     const handleSend = async () => {
+        setMessage(prompt)
         setIsLoading(true)
         setPrompt("")
 
@@ -24,6 +26,7 @@ function ChatContainer({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: Reac
             setResponse(response.text?.replace(/\*/g, '') || '');
         } catch (error) {
             console.log(error)
+            setResponse("This feature is temporarily unavailable. Check back shortly.");
         } finally {
             setIsLoading(false)
         }
@@ -57,17 +60,24 @@ function ChatContainer({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: Reac
                 </div>
 
                 {/* Messages */}
-                <div className='flex-1 overflow-y-auto'>
-                    <div className={cn('flex flex-col gap-1 px-2 py-2', !response && !isLoading && 'hidden')}>
-                        <div className='bg-black dark:bg-white rounded-md p-4 w-fit max-w-60'>
-                            {isLoading ?
-                                <div className='bg-black dark:bg-white flex flex-row gap-1'>
-                                    <div className='w-1 h-1 bg-white dark:bg-black animate-bounce rounded-full'></div>
-                                    <div className='w-1 h-1 bg-white dark:bg-black animate-bounce delay-150 rounded-full'></div>
-                                    <div className='w-1 h-1 bg-white dark:bg-black animate-bounce delay-300 rounded-full'></div>
-                                </div> :
-                                <span className='text-white dark:text-black text-sm'>{response}</span>
-                            }
+                <div className='flex-1 overflow-y-auto space-y-4 p-2'>
+                    <div className='flex flex-col items-end'>
+                        <div className={cn('bg-blue-500 rounded-lg p-4 w-fit max-w-60', !message.trim() && 'hidden')}>
+                            <span className='text-white'>{message}</span>
+                        </div>
+                    </div>
+                    <div className='flex flex-col items-start'>
+                        <div className={cn('', !response && !isLoading && 'hidden')}>
+                            <div className='bg-black dark:bg-white rounded-lg p-4 w-fit max-w-60'>
+                                {isLoading ?
+                                    <div className='bg-black dark:bg-white flex flex-row gap-1'>
+                                        <div className='w-1 h-1 bg-white dark:bg-black animate-bounce rounded-full'></div>
+                                        <div className='w-1 h-1 bg-white dark:bg-black animate-bounce delay-150 rounded-full'></div>
+                                        <div className='w-1 h-1 bg-white dark:bg-black animate-bounce delay-300 rounded-full'></div>
+                                    </div> :
+                                    <span className='text-white dark:text-black text-sm'>{response}</span>
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
