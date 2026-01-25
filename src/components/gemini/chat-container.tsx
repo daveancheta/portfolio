@@ -1,7 +1,7 @@
 "use client"
 import { Send, X } from 'lucide-react'
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupText, InputGroupTextarea } from '../ui/input-group'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { GoogleGenAI } from "@google/genai";
 import { cn } from '@/lib/utils';
 
@@ -12,6 +12,7 @@ function ChatContainer({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: Reac
     const [response, setResponse] = useState<any>("")
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [message, setMessage] = useState<string>("")
+    const messageRef = useRef<HTMLDivElement>(null)
 
     const handleSend = async () => {
         setMessage(prompt)
@@ -39,6 +40,12 @@ function ChatContainer({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: Reac
         }
     }
 
+    useEffect(() => {
+        if (messageRef.current) {
+            messageRef.current.scrollIntoView({ behavior: "smooth" })
+        }
+    })
+
     return (
         <div className='sm:relative bg-background border
         rounded-md sm:min-h-130 sm:min-w-100 max-w-100 sm:h-full flex flex-col w-screen h-130 max-h-130'>
@@ -60,14 +67,20 @@ function ChatContainer({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: Reac
                 </div>
 
                 {/* Messages */}
-                <div className='flex-1 overflow-y-auto space-y-4 p-2'>
+                <div className='flex-1 overflow-y-auto space-y-4 p-2 scrollable-div'>
+                    <div className='flex flex-col items-start gap-2'>
+                        <div className='bg-black dark:bg-white rounded-lg p-4 w-fit max-w-60'>
+                            <span className='text-white dark:text-black text-sm'>Hi there! 👋 I’m here to help with Full-Stack Development. Got a question about frontend, backend, databases, or deploying your project? Ask me anything!</span>
+                        </div>
+                    </div>
+
                     <div className='flex flex-col items-end'>
                         <div className={cn('bg-blue-500 rounded-lg p-4 w-fit max-w-60', !message.trim() && 'hidden')}>
                             <span className='text-white'>{message}</span>
                         </div>
                     </div>
                     <div className='flex flex-col items-start'>
-                        <div className={cn('', !response && !isLoading && 'hidden')}>
+                        <div className={cn(!response && !isLoading && 'hidden')}>
                             <div className='bg-black dark:bg-white rounded-lg p-4 w-fit max-w-60'>
                                 {isLoading ?
                                     <div className='bg-black dark:bg-white flex flex-row gap-1'>
@@ -80,7 +93,9 @@ function ChatContainer({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: Reac
                             </div>
                         </div>
                     </div>
+                    <div ref={messageRef}></div>
                 </div>
+
                 {/* Message Input */}
                 <InputGroup className='rounded-t-none'>
                     <InputGroupTextarea
