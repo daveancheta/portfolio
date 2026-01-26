@@ -93,7 +93,7 @@ function ChatContainer({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: Reac
                             </div>
                         </div>
                     </div>
-                    <div ref={messageRef}></div>
+                    <div className={cn(isOpen && "hidden")} ref={messageRef}></div>
                 </div>
 
                 {/* Message Input */}
