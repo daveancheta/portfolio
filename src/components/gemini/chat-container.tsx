@@ -34,9 +34,15 @@ function ChatContainer({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: Reac
     }
 
     const handleKeyEnter = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
+        if (e.key === 'Enter') {
             e.preventDefault()
-            handleSend()
+        }
+
+        if (prompt.trim()) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault()
+                handleSend()
+            }
         }
     }
 
