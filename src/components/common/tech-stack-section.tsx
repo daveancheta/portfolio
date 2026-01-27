@@ -1,7 +1,7 @@
 import { Layers } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import LogoLoop from "../LogoLoop";
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiJavascript, SiPostgresql, SiMongodb, SiNodedotjs, SiExpress, SiLaravel, SiCodeigniter, SiJsonwebtokens, SiMysql, SiSqlite, SiPrisma, SiVercel, SiRailway } from 'react-icons/si';
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiJavascript, SiPostgresql, SiMongodb, SiNodedotjs, SiExpress, SiLaravel, SiCodeigniter, SiJsonwebtokens, SiMysql, SiSqlite, SiPrisma, SiVercel, SiRailway, SiFigma } from 'react-icons/si';
 import { useIsMobile } from "@/app/hooks/use-mobiel";
 import { motion } from "motion/react"
 
@@ -16,7 +16,7 @@ function TechStackSection() {
             database: ["PostgreSQL", "MongoDB", "MySQL", "SQLite"],
             orm: ["Prisma", "Eloquent"],
             deployment: ["Vercel", "Railway", "Neon"],
-            devTools: ["Git", "Github", "VS Code", "Discord"]
+            devTools: ["Git", "Github", "VS Code", "Figma", "Discord"]
         }
     ]
 
@@ -38,6 +38,7 @@ function TechStackSection() {
         { node: <SiPrisma /> },
         { node: <SiVercel /> },
         { node: <SiRailway /> },
+        { node: <SiFigma /> },
     ];
 
     return (
