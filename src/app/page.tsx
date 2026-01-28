@@ -7,19 +7,15 @@ import ProjectSection from "@/components/common/project-section";
 import TechStackSection from "@/components/common/tech-stack-section";
 import AIAgent from "@/components/gemini/ai-agent";
 import Squares from "@/components/Squares";
-import { Button } from "@/components/ui/button";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
 import { cn } from "@/lib/utils";
-import { MoveUp } from "lucide-react";
 import { useTheme } from "next-themes";
-import { use, useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
 
 export default function Home() {
   const { theme } = useTheme();
   const topRef = useRef<HTMLDivElement>(null)
-  const [show, setShow] = useState<boolean>(false);
-  const scrollToTopRef = useRef<HTMLButtonElement>(null);
 
   return (
     <div className="relative w-screen min-h-screen cursor-none">
