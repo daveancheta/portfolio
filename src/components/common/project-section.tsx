@@ -1,8 +1,9 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
-import { FolderKanban } from "lucide-react"
+import { Eye, FolderKanban, Info } from "lucide-react"
 import { motion } from "motion/react"
+import { Button } from "../ui/button"
 
 type Project = {
   id: number
@@ -39,7 +40,7 @@ const projects: Project[] = [
     description:
       "Role-based car rental system with booking, driver assignment, rental tracking, and comprehensive admin tools built on Laravel.",
     stack: ["Laravel", "Blade", "Tailwind", "MySQL"],
-    link: "https://github.com/daveancheta/Car-Rental-System-Laravel",
+    link: "",
   },
   {
     id: 4,
@@ -48,7 +49,7 @@ const projects: Project[] = [
     description:
       "SaaS platform connecting parents with available babysitters, featuring bookings, secure online payments, and commission-based revenue.",
     stack: ["Laravel", "React", "TypeScript", "Tailwind", "MySQL"],
-    link: "https://github.com/daveancheta/Babysitter-Booking-System",
+    link: "",
   },
 ]
 
@@ -85,12 +86,9 @@ function ProjectSection() {
 
       <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
         {projects.map((project) => (
-          <Link
+          <div
             key={project.id}
-            href={project.link}
-            target="_blank"
             rel="noreferrer noopener"
-            aria-label={`Open ${project.title} project in a new tab`}
           >
             <motion.article
               className="group h-full overflow-hidden rounded-xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
@@ -129,9 +127,26 @@ function ProjectSection() {
                 <p className="text-sm sm:text-base text-muted-foreground">
                   {project.description}
                 </p>
+                <div className="flex flex-row gap-2 items-center mt-5">
+                  {project.link ?
+
+                    <Button variant="outline" className="cursor-none" asChild>
+                      <Link href={project.link}>
+                        <Eye /> Live Site
+                      </Link>
+                    </Button> :
+                    <Button variant="outline" className="cursor-none" disabled>
+                      <Eye /> Live Site
+                    </Button>}
+                  <Button className="cursor-none" asChild>
+                    <Link href={`/projects/${project.id}`}>
+                      <Info /> More Info
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </motion.article>
-          </Link>
+          </div>
         ))}
       </div>
     </section>
