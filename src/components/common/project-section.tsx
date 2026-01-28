@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Eye, FolderKanban, Info } from "lucide-react"
 import { motion } from "motion/react"
 import { Button } from "../ui/button"
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip"
 
 export type Project = {
   id: number
@@ -134,9 +135,16 @@ function ProjectSection() {
                         <Eye /> Live Site
                       </Link>
                     </Button> :
-                    <Button variant="outline" className="cursor-none" disabled>
-                      <Eye /> Live Site
-                    </Button>}
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button variant="outline" className="opacity-50 select-none cursor-none">
+                        <Eye /> Live Site
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Live site not available</p>
+                      </TooltipContent>
+                    </Tooltip>}
                   <Button className="cursor-none" asChild>
                     <Link href={`/projects/${project.id}`}>
                       <Info /> More Info
