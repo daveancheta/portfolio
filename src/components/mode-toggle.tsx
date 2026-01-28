@@ -1,10 +1,12 @@
-"use client"
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
+"use client";
+
+import { cn } from "@/lib/utils";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 export function ModeToggle() {
-  const { setTheme, theme } = useTheme()
+  const { setTheme, theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -14,15 +16,20 @@ export function ModeToggle() {
   if (!mounted) return null;
 
   return (
-    <div>{theme !== "light" ?
-      <button className="cursor-none"
+    <div className="rounded-full p-1 bg-transparent
+     border border-black/50 dark:border-white/50 flex flex-row justify-center items-center gap-1">
+      <button className={cn("cursor-none rounded-full p-1",
+        theme === 'light' && "bg-gray-600"
+      )}
         onClick={() => setTheme('light')}>
-        <Sun className="text-yellow-500 size-5 sm:size-6 text-center" />
-      </button> :
-      <button className="cursor-none"
+        <Sun className="size-4 text-white" />
+      </button>
+      <button className={cn("cursor-none rounded-full p-1",
+        theme === 'dark' && "bg-gray-600/50"
+      )}
         onClick={() => setTheme('dark')}>
-        <Moon className="text-gray-800 size-5 sm:size-6 text-center" />
-      </button>}
+        <Moon className="size-4 fill-white" />
+      </button>
     </div>
   )
 }
