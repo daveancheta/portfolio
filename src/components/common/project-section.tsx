@@ -5,7 +5,7 @@ import { Eye, FolderKanban, Info } from "lucide-react"
 import { motion } from "motion/react"
 import { Button } from "../ui/button"
 
-type Project = {
+export type Project = {
   id: number
   title: string
   imgUrl: string
@@ -14,7 +14,7 @@ type Project = {
   link: string
 }
 
-const projects: Project[] = [
+export const projects: Project[] = [
   {
     id: 1,
     title: "ReQuake",
