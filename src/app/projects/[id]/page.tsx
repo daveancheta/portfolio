@@ -5,7 +5,7 @@ import { SmoothCursor } from "@/components/ui/smooth-cursor";
 import { cn } from "@/lib/utils";
 import { MoveLeft } from "lucide-react";
 import { useTheme } from "next-themes";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { use } from "react";
 
 type Project = {
@@ -56,6 +56,7 @@ function page({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params);
     const project = projects.find((project) => project.id === Number(id));
     const { theme } = useTheme();
+    const router = useRouter();
 
     return (
         <div className="h-screen w-screen">
@@ -75,10 +76,10 @@ function page({ params }: { params: Promise<{ id: string }> }) {
             <div className="absolute inset-0 bg-white/90 dark:bg-black/90 -z-5"></div>
 
             <div className="wrapper my-4">
-                <Link href="/" className="flex flex-row items-center gap-2 text-muted-foreground cursor-none">
+                <button onClick={() => router.back()} className="flex flex-row items-center gap-2 text-muted-foreground cursor-none">
                     <MoveLeft />
                     Back to Home
-                </Link>
+                </button>
 
                 <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 justify-between gap-4 cursor-none">
                     <div className="space-y-6 order-2 sm:order-1">
