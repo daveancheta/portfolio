@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { use } from "react";
 
 type Project = {
-    id: number
+    id: string
     title: string
     imgUrl: string
     problem: string
@@ -19,7 +19,7 @@ type Project = {
 
 const projects: Project[] = [
     {
-        id: 1,
+        id: "a9f3",
         title: "ReQuake",
         imgUrl: "/requake.png",
         problem: "Many people rely on social media or delayed news updates to know when an earthquake has occurred. This can cause confusion, misinformation, and slow response times, especially for communities that need quick and reliable updates to stay safe and aware of seismic activity in their area.",
@@ -27,7 +27,7 @@ const projects: Project[] = [
         type: "Personal Project",
     },
     {
-        id: 2,
+        id: "k2x7",
         title: "Grindax",
         imgUrl: "/grindax.png",
         problem: "Movie lovers often struggle to keep track of the films they’ve already watched or the ones they plan to watch. Lists are usually scattered across notes, screenshots, or different apps, making it inconvenient to manage personal movie collections and share recommendations within the community.",
@@ -35,7 +35,7 @@ const projects: Project[] = [
         type: "Personal Project",
     },
     {
-        id: 3,
+        id: "m8q1",
         title: "CarVibe",
         imgUrl: "/carvibe.png",
         problem: "Managing rented cars can be confusing when there is no centralized system for tracking bookings, drivers, and vehicle status. Renters lack visibility into their rentals, drivers have no clear assignment tracking, and admins struggle to monitor active rentals, availability, and overall operations efficiently.",
@@ -43,7 +43,7 @@ const projects: Project[] = [
         type: "Personal Project",
     },
     {
-        id: 4,
+        id: "r4z9",
         title: "SitterLy",
         imgUrl: "/sitterly.png",
         problem: "Parents often struggle to find reliable babysitters online because information is scattered across social media and different platforms. Babysitters have no centralized place to advertise their services, and managing bookings or payments is cumbersome without a proper system.",
@@ -54,7 +54,7 @@ const projects: Project[] = [
 
 function page({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params);
-    const project = projects.find((project) => project.id === Number(id));
+    const project = projects.find((project) => project.id === id);
     const { theme } = useTheme();
     const router = useRouter();
 

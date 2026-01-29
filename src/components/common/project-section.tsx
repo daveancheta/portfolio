@@ -7,7 +7,7 @@ import { Button } from "../ui/button"
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip"
 
 export type Project = {
-  id: number
+  id: string
   title: string
   imgUrl: string
   description: string
@@ -17,7 +17,7 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: 1,
+    id: "a9f3",
     title: "ReQuake",
     imgUrl: "/requake.png",
     description:
@@ -26,7 +26,7 @@ export const projects: Project[] = [
     link: "https://requake.vercel.app/",
   },
   {
-    id: 2,
+    id: "k2x7",
     title: "Grindax",
     imgUrl: "/grindax.png",
     description:
@@ -35,7 +35,7 @@ export const projects: Project[] = [
     link: "https://grindax.vercel.app/",
   },
   {
-    id: 3,
+    id: "m8q1",
     title: "CarVibe",
     imgUrl: "/carvibe.png",
     description:
@@ -44,7 +44,7 @@ export const projects: Project[] = [
     link: "",
   },
   {
-    id: 4,
+    id: "r4z9",
     title: "SitterLy",
     imgUrl: "/sitterly.png",
     description:
