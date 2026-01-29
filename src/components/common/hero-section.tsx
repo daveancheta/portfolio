@@ -97,7 +97,7 @@ function HeroSection() {
             </p>
 
             <p className="sm:text-3xl md:text-2xl text-xl mt-5 sm:w-130 pacifico text-muted-foreground">
-              "Keep learning, build with intention, and stay grounded in what truly matters." – Dave
+              "Never stop learning, keep exploring new things, and always have fun." – Dave
             </p>
           </div>
           <div>
