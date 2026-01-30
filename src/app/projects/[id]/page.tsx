@@ -59,12 +59,12 @@ function page({ params }: { params: Promise<{ id: string }> }) {
     const router = useRouter();
 
     return (
-        <div className="h-screen w-screen">
+        <div className="relative w-screen min-h-screen cursor-none">
             <div className="z-20 hidden sm:flex">
                 <SmoothCursor />
             </div>
 
-            <div className="absolute inset-0 -z-10">
+            <div className="fixed inset-0 -z-10">
                 <Squares
                     speed={0.5}
                     squareSize={40}
@@ -73,7 +73,7 @@ function page({ params }: { params: Promise<{ id: string }> }) {
                 />
             </div>
 
-            <div className="absolute inset-0 bg-white/90 dark:bg-black/90 -z-5"></div>
+            <div className="fixed inset-0 bg-white/90 dark:bg-black/90 -z-5"></div>
 
             <div className="wrapper my-4">
                 <button onClick={() => router.back()} className="flex flex-row items-center gap-2 text-muted-foreground cursor-none">
