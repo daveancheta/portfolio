@@ -20,6 +20,7 @@ import {
   SiVercel,
   SiRailway,
   SiFigma,
+  SiDrizzle,
 } from "react-icons/si";
 import { useIsMobile } from "@/app/hooks/use-mobiel";
 import { motion } from "motion/react";
@@ -40,7 +41,7 @@ function TechStackSection() {
     ],
     backend: ["Node.js", "Express", "Laravel", "CodeIgniter", "JWT", "REST"],
     database: ["PostgreSQL", "MongoDB", "MySQL", "SQLite"],
-    orm: ["Prisma", "Eloquent"],
+    orm: ["Drizzle", "Prisma", "Eloquent"],
     deployment: ["Vercel", "Railway", "Neon"],
     devTools: ["Git", "Github", "VS Code", "Figma", "Discord"],
   } as const;
@@ -71,6 +72,7 @@ function TechStackSection() {
     { node: <SiMongodb /> },
     { node: <SiMysql /> },
     { node: <SiSqlite /> },
+    { node: <SiDrizzle /> },
     { node: <SiPrisma /> },
     { node: <SiVercel /> },
     { node: <SiRailway /> },
