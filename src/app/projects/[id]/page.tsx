@@ -118,7 +118,7 @@ function page({ params }: { params: Promise<{ id: string }> }) {
                             <img className="w-full sm:h-100 object-cover hover:scale-102 
                     transition-all duration-500 ease-in-out rounded-b-none border border-border/60" src={project?.imgUrl} alt={project?.title} />
                             <div className="flex justify-between p-4 items-center bg-card text-card-foreground">
-                                <div className="flex flex-col items-center">
+                                <div className="flex flex-col items-start">
                                     <span className="uppercase tracking-wider text-xs text-muted-foreground">overview</span>
                                     <h1 className="font-bold">{project?.title}</h1>
                                 </div>
